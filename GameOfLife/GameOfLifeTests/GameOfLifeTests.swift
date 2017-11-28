@@ -32,35 +32,9 @@ import XCTest
 class GameOfLifeTests: XCTestCase {
     
     // MARK: Factory tests
-
-    func test_makeGame() {
-        XCTAssertTrue(makeGame(columns: 0, rows: 0) == [])
-        XCTAssertTrue(makeGame(columns: 0, rows: 1) == [])
-        XCTAssertTrue(makeGame(columns: 1, rows: 0) == [[]])
-        XCTAssertTrue(makeGame(columns: 1, rows: 1) == [[makeDeadCell()]])
-        XCTAssertTrue(makeGame(columns: 2, rows: 1) == [[makeDeadCell()], [makeDeadCell()]])
-        XCTAssertTrue(makeGame(columns: 1, rows: 2) == [[makeDeadCell(), makeDeadCell()]])
-        XCTAssertTrue(makeGame(columns: 2, rows: 2) == [[makeDeadCell(), makeDeadCell()], [makeDeadCell(), makeDeadCell()]])
-    }
-    
-    func test_makeGame_repeatingLivingCell() {
-        let cell = makeLiveCell()
-        XCTAssertTrue(makeGame(columns: 1, rows: 1, repeating: cell) == [[cell]])
-        XCTAssertTrue(makeGame(columns: 2, rows: 1, repeating: cell) == [[cell], [cell]])
-        XCTAssertTrue(makeGame(columns: 1, rows: 2, repeating: cell) == [[cell, cell]])
-        XCTAssertTrue(makeGame(columns: 2, rows: 2, repeating: cell) == [[cell, cell], [cell, cell]])
-    }
-    
-    func test_makeGame_repeatingDeadCell() {
-        let cell = makeDeadCell()
-        XCTAssertTrue(makeGame(columns: 1, rows: 1, repeating: cell) == [[cell]])
-        XCTAssertTrue(makeGame(columns: 2, rows: 1, repeating: cell) == [[cell], [cell]])
-        XCTAssertTrue(makeGame(columns: 1, rows: 2, repeating: cell) == [[cell, cell]])
-        XCTAssertTrue(makeGame(columns: 2, rows: 2, repeating: cell) == [[cell, cell], [cell, cell]])
-    }
     
     func test_updateCell() {
-        let game = makeGame(columns: 2, rows: 2, repeating: makeDeadCell())
+        let game = [[makeDeadCell(), makeDeadCell()], [makeDeadCell(), makeDeadCell()]]
         
         XCTAssertTrue(replace(makeLiveCell(), at: makePosition(column: 0, row: 0), in: game) ==  [[makeLiveCell(), makeDeadCell()], [makeDeadCell(), makeDeadCell()]])
         XCTAssertTrue(replace(makeLiveCell(), at: makePosition(column: 1, row: 0), in: game) ==  [[makeDeadCell(), makeDeadCell()], [makeLiveCell(), makeDeadCell()]])
@@ -87,10 +61,14 @@ class GameOfLifeTests: XCTestCase {
                      [makeDeadCell(), makeLiveCell(), makeDeadCell()],
                      [makeDeadCell(), makeDeadCell(), makeDeadCell()]]
         
+        let expected = [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
+                        [makeDeadCell(), makeDeadCell(), makeDeadCell()],
+                        [makeDeadCell(), makeDeadCell(), makeDeadCell()]]
+
         (0...2).forEach { column in
             (0...2).forEach { row in
                 let game = replace(makeLiveCell(), at: makePosition(column: column, row: row), in: state)
-                XCTAssertTrue(step(game) == makeGame(columns: 3, rows: 3, repeating: makeDeadCell()))
+                XCTAssertTrue(step(game) == expected)
             }
         }
     }

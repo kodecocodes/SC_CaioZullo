@@ -40,10 +40,6 @@ func makeDeadCell() -> Cell {
     return false
 }
 
-func makeGame(columns: Int, rows: Int, repeating: Cell = makeDeadCell()) -> GameState {
-    return Array(repeating: Array(repeating: repeating, count: rows), count: columns)
-}
-
 func makePosition(column: Int, row: Int) -> Position {
     return (column, row)
 }
