@@ -62,7 +62,7 @@ func replace(_ newCell: Cell, at position: Position, in state: GameState) -> Gam
     }
 }
 
-func step(_ state: GameState) -> GameState {
+func tick(_ state: GameState) -> GameState {
     return state.enumerated().map{ (column, rows) in
         return rows.enumerated().map { (row, cell) in
             let neighbours = aliveNeighbours(from: makePosition(column: column, row: row), in: state)

@@ -44,7 +44,7 @@ class GameOfLifeTests: XCTestCase {
     
     // MARK: Game tests
     
-    func test_step_liveCellWithAllNeighboursDead_dies() {
+    func test_tick_liveCellWithAllNeighboursDead_dies() {
         let state = [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
                      [makeDeadCell(), makeLiveCell(), makeDeadCell()],
                      [makeDeadCell(), makeDeadCell(), makeDeadCell()]]
@@ -53,10 +53,10 @@ class GameOfLifeTests: XCTestCase {
                         [makeDeadCell(), makeDeadCell(), makeDeadCell()],
                         [makeDeadCell(), makeDeadCell(), makeDeadCell()]]
         
-        XCTAssertTrue(step(state) == expected)
+        XCTAssertTrue(tick(state) == expected)
     }
     
-    func test_step_liveCellWithOneLiveNeighbour_dies() {
+    func test_tick_liveCellWithOneLiveNeighbour_dies() {
         let state = [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
                      [makeDeadCell(), makeLiveCell(), makeDeadCell()],
                      [makeDeadCell(), makeDeadCell(), makeDeadCell()]]
@@ -68,13 +68,13 @@ class GameOfLifeTests: XCTestCase {
         (0...2).forEach { column in
             (0...2).forEach { row in
                 let game = replace(makeLiveCell(), at: makePosition(column: column, row: row), in: state)
-                XCTAssertTrue(step(game) == expected)
+                XCTAssertTrue(tick(game) == expected)
             }
         }
     }
     
-    func test_step_liveCellWithTwoOrThreeLiveNeighbours_lives() {
-        XCTAssertTrue(step([[makeLiveCell(), makeDeadCell(), makeDeadCell()],
+    func test_tick_liveCellWithTwoOrThreeLiveNeighbours_lives() {
+        XCTAssertTrue(tick([[makeLiveCell(), makeDeadCell(), makeDeadCell()],
                             [makeDeadCell(), makeLiveCell(), makeDeadCell()],
                             [makeDeadCell(), makeDeadCell(), makeLiveCell()]])
                                 ==
@@ -82,7 +82,7 @@ class GameOfLifeTests: XCTestCase {
                             [makeDeadCell(), makeLiveCell(), makeDeadCell()],
                             [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
 
-        XCTAssertTrue(step([[makeDeadCell(), makeDeadCell(), makeLiveCell()],
+        XCTAssertTrue(tick([[makeDeadCell(), makeDeadCell(), makeLiveCell()],
                             [makeDeadCell(), makeLiveCell(), makeDeadCell()],
                             [makeLiveCell(), makeDeadCell(), makeDeadCell()]])
                                 ==
@@ -91,8 +91,8 @@ class GameOfLifeTests: XCTestCase {
                             [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
     }
     
-    func test_step_deadCellWithExactlyThreeLiveNeighbours_becomesAlive() {
-        XCTAssertTrue(step([[makeDeadCell(), makeLiveCell(), makeDeadCell()],
+    func test_tick_deadCellWithExactlyThreeLiveNeighbours_becomesAlive() {
+        XCTAssertTrue(tick([[makeDeadCell(), makeLiveCell(), makeDeadCell()],
                             [makeLiveCell(), makeLiveCell(), makeLiveCell()],
                             [makeDeadCell(), makeLiveCell(), makeDeadCell()]])
                                 ==
@@ -111,8 +111,8 @@ class GameOfLifeTests: XCTestCase {
         let block = [[makeLiveCell(), makeLiveCell()],
                      [makeLiveCell(), makeLiveCell()]]
         
-        XCTAssertTrue(step(block) == block)
-        XCTAssertTrue(step(step(block)) == block)
+        XCTAssertTrue(tick(block) == block)
+        XCTAssertTrue(tick(tick(block)) == block)
     }
 
     func test_tubStillLive() {
@@ -120,8 +120,8 @@ class GameOfLifeTests: XCTestCase {
                    [makeLiveCell(), makeDeadCell(), makeLiveCell()],
                    [makeDeadCell(), makeLiveCell(), makeDeadCell()]]
 
-        XCTAssertTrue(step(tub) == tub)
-        XCTAssertTrue(step(step(tub)) == tub)
+        XCTAssertTrue(tick(tub) == tub)
+        XCTAssertTrue(tick(tick(tub)) == tub)
     }
 
     // MARK: Period 2 Oscilators (loop patterns)
@@ -132,11 +132,11 @@ class GameOfLifeTests: XCTestCase {
                        [makeDeadCell(), makeLiveCell(), makeDeadCell()]]
         
         let period2 = [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
-                        [makeLiveCell(), makeLiveCell(), makeLiveCell()],
-                        [makeDeadCell(), makeDeadCell(), makeDeadCell()]]
+                       [makeLiveCell(), makeLiveCell(), makeLiveCell()],
+                       [makeDeadCell(), makeDeadCell(), makeDeadCell()]]
         
-        XCTAssertTrue(step(period1) == period2)
-        XCTAssertTrue(step(step(period1)) == period1)
+        XCTAssertTrue(tick(period1) == period2)
+        XCTAssertTrue(tick(tick(period1)) == period1)
     }
     
     func test_toadOscilator() {
@@ -150,8 +150,8 @@ class GameOfLifeTests: XCTestCase {
                        [makeLiveCell(), makeDeadCell(), makeDeadCell(), makeLiveCell()],
                        [makeDeadCell(), makeLiveCell(), makeDeadCell(), makeDeadCell()]]
 
-        XCTAssertTrue(step(period1) == period2)
-        XCTAssertTrue(step(step(period1)) == period1)
+        XCTAssertTrue(tick(period1) == period2)
+        XCTAssertTrue(tick(tick(period1)) == period1)
     }
 }
 
