@@ -31,49 +31,34 @@ import XCTest
 
 class GameOfLifeTests: XCTestCase {
     
-    // MARK: Factory tests
-    
-    func test_updateCell() {
-        let game = [[makeDeadCell(), makeDeadCell()], [makeDeadCell(), makeDeadCell()]]
-        
-        XCTAssertTrue(replace(makeLiveCell(), at: makePosition(column: 0, row: 0), in: game) ==  
-            [[makeLiveCell(), makeDeadCell()], [makeDeadCell(), makeDeadCell()]])
-        XCTAssertTrue(replace(makeLiveCell(), at: makePosition(column: 1, row: 0), in: game) ==  [[makeDeadCell(), makeDeadCell()], [makeLiveCell(), makeDeadCell()]])
-        XCTAssertTrue(replace(makeLiveCell(), at: makePosition(column: 0, row: 1), in: game) ==  [[makeDeadCell(), makeLiveCell()], [makeDeadCell(), makeDeadCell()]])
-        XCTAssertTrue(replace(makeLiveCell(), at: makePosition(column: 1, row: 1), in: game) ==  [[makeDeadCell(), makeDeadCell()], [makeDeadCell(), makeLiveCell()]])
-    }
-    
-    // MARK: Game tests
-    
     func test_tick_liveCellWithAllNeighboursDead_dies() {
-        let state = [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
-                     [makeDeadCell(), makeLiveCell(), makeDeadCell()],
-                     [makeDeadCell(), makeDeadCell(), makeDeadCell()]]
-
-        let expected = [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
-                        [makeDeadCell(), makeDeadCell(), makeDeadCell()],
-                        [makeDeadCell(), makeDeadCell(), makeDeadCell()]]
-        
-        XCTAssertTrue(tick(state) == expected)
+        XCTAssertTrue(tick([[makeDeadCell(), makeDeadCell(), makeDeadCell()],
+                            [makeDeadCell(), makeLiveCell(), makeDeadCell()],
+                            [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
+                                ==
+                           [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
+                            [makeDeadCell(), makeDeadCell(), makeDeadCell()],
+                            [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
     }
     
     func test_tick_liveCellWithOneLiveNeighbour_dies() {
-        let state = [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
-                     [makeDeadCell(), makeLiveCell(), makeDeadCell()],
-                     [makeDeadCell(), makeDeadCell(), makeDeadCell()]]
-        
-        let expected = [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
-                        [makeDeadCell(), makeDeadCell(), makeDeadCell()],
-                        [makeDeadCell(), makeDeadCell(), makeDeadCell()]]
+        XCTAssertTrue(tick([[makeLiveCell(), makeDeadCell(), makeDeadCell()],
+                            [makeDeadCell(), makeLiveCell(), makeDeadCell()],
+                            [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
+                                ==
+                           [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
+                            [makeDeadCell(), makeDeadCell(), makeDeadCell()],
+                            [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
 
-        (0...2).forEach { column in
-            (0...2).forEach { row in
-                let game = replace(makeLiveCell(), at: makePosition(column: column, row: row), in: state)
-                XCTAssertTrue(tick(game) == expected)
-            }
-        }
+        XCTAssertTrue(tick([[makeDeadCell(), makeDeadCell(), makeDeadCell()],
+                            [makeDeadCell(), makeLiveCell(), makeDeadCell()],
+                            [makeDeadCell(), makeDeadCell(), makeLiveCell()]])
+                                ==
+                           [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
+                            [makeDeadCell(), makeDeadCell(), makeDeadCell()],
+                            [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
     }
-    
+
     func test_tick_liveCellWithTwoOrThreeLiveNeighbours_lives() {
         XCTAssertTrue(tick([[makeLiveCell(), makeDeadCell(), makeDeadCell()],
                             [makeDeadCell(), makeLiveCell(), makeDeadCell()],

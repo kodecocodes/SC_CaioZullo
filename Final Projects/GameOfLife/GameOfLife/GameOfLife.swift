@@ -44,24 +44,6 @@ func makePosition(column: Int, row: Int) -> Position {
     return (column, row)
 }
 
-func replace(_ newCell: Cell, at position: Position, in state: GameState) -> GameState {
-    // Silly / not performant implementation!
-    // One of the goals set for this series is to avoid mutation, so the keyword "var" is forbidden
-    // this limitation makes us search for different patterns to solve this problem in a functional way
-    // and part of the tutorial idea is to show how to create perfomant immutable code too, for example ArraySlices and Lazy collections!
-    
-    // It can also be a challenge for the audience: improve the performance of this function without using "var"
-    
-    return state.enumerated().map{ (column, rows) in
-        return rows.enumerated().map { (row, cell) in
-            if column == position.column && row == position.row {
-                return newCell
-            }
-            return cell
-        }
-    }
-}
-
 func tick(_ state: GameState) -> GameState {
     return state.enumerated().map{ (column, rows) in
         return rows.enumerated().map { (row, cell) in
