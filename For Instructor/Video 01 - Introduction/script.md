@@ -6,7 +6,9 @@ Swift Code Katas: Introduction
 
 ## Screencast Description
 
-[TODO Caio please add description here. Example: In the past working with JSON meant using either NSJSONSerialization class or a third party library. Now it's a matter of implementing a simple protocol.]
+In many other industries, folks practice every day to master their crafts - take a look at great musicians or athletes for example. However, for some reason many of us as Swift developers feel that our practice is done on the job. But that often leads to a lot of mistakes, and a lot of bugs.
+
+The idea behind Swift code katas is to split the practice from the profession, so we can dedicate time to become better and better at what we do.
 
 ## Language, Editor and Platform versions used in this screencast
 
@@ -26,13 +28,11 @@ One of the key aspects of katas is that you learn by practice and repetition, re
 
 And just like there are katas for martial arts, we can make katas for Swift coding too! Swift Code katas are exercises that help Swift developers master their skills through practice and repetition. 
 
-This is important, because in many other industries, folks practice every day to master their crafts - take a look at great musisians or athletes for example. However, for some reason many of us as Swift developers feel that our practice is done on the job. But that often leads to a lot of mistakes, and a lot of bugs.
+This is important, because in many other industries, folks practice every day to master their crafts - take a look at great musicians or athletes for example. However, for some reason many of us as Swift developers feel that our practice is done on the job. But that often leads to a lot of mistakes, and a lot of bugs.
 
 So the idea behind Swift code katas is to split the practice from the profession, so we can dedicate time to become better and better at what we do.
 
 ## Demo (game-of-life-slides.key)
-
-[TODO Caio: these will definitely need some slides explaining to visualize what you're covering here. For now since you don't have a greenscreen I recommend using full-screen slides and just record you talking as you play the slides here.]
 
 In this screencast, we're going to start practicing right away with our first Swift Code Kata: The Game of Life!
 
