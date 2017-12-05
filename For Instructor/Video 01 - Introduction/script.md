@@ -30,7 +30,7 @@ This is important, because in many other industries, folks practice every day to
 
 So the idea behind Swift code katas is to split the practice from the profession, so we can dedicate time to become better and better at what we do.
 
-## Demo
+## Demo (game-of-life-slides.key)
 
 [TODO Caio: these will definitely need some slides explaining to visualize what you're covering here. For now since you don't have a greenscreen I recommend using full-screen slides and just record you talking as you play the slides here.]
 
@@ -38,17 +38,17 @@ In this screencast, we're going to start practicing right away with our first Sw
 
 The Game of life is played in a 2D grid where each cell can be in one of two possible states: either alive, or dead. 
 
-You can populate the initial pattern by selecting which cells will be alive or dead. At each "step" in time, every cell interacts with its eight neighbours, which are the cells that are horizontally, vertically, or diagonally adjacent, and then the next generation of cells is calculated by these four rules:
+You can populate the initial pattern by selecting which cells will be alive or dead. At each "tick" in time, every cell interacts with its eight neighbours, which are the cells that are horizontally, vertically, or diagonally adjacent, and then the next generation of cells is calculated by these four rules:
 
 - Any live cell with fewer than two live neighbours dies, as if caused by underpopulation.
 
 - Any live cell with two or three live neighbours lives on to the next generation.
 
-- Any live cell with more than three live neighbours dies, as if by overpopulation.
-
 - Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
-In every "step" in time, the above rules should be applied simultaneously to every cell and the process can be repeated indefinitely to create new generations.
+- Any live cell with more than three live neighbours dies, as if by overpopulation.
+
+In every "tick" in time, the above rules should be applied simultaneously to every cell and the process can be repeated indefinitely to create new generations.
 
 ## Talking Head
 
@@ -60,11 +60,10 @@ I don't recommend trying the last one, but by setting up constraints, you limit 
 
 Well for this example, we'll use some constraints to maximise our mastery experience on the following techniques:
 
-1. TDD: The code kata must be test-driven
-2. Functional programming, which means:
+1. The code kata must be test-driven
+2. Functional:
 	- No mutation
 	- Only pure functions
-	- Immutable data
 	- The "var" keyword is not allowed!
 
 The goal is to practice TDD and functional programming skills, so the final code can be as simple as possible, as long as it respect the constraints.
@@ -75,7 +74,7 @@ Remember, the only way you'll get anything out of a code kata like this is to pu
 
 So - pause the video and put your skills to the test - and good luck. 
 
-## Challenge Slide
+## Challenge Slide (challenge-slide.key)
 
 ## Demo
 
