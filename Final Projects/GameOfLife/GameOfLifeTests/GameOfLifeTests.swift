@@ -36,17 +36,14 @@ class GameOfLifeTests: XCTestCase {
         XCTAssertTrue(tick([[]]) == [[]])
     }
     
-    func test_tick_liveCellWithAllNeighboursDead_dies() {
-        XCTAssertTrue(tick([[makeDeadCell(), makeDeadCell(), makeDeadCell()],
-                            [makeDeadCell(), makeLiveCell(), makeDeadCell()],
-                            [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
-                                ==
-                           [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
-                            [makeDeadCell(), makeDeadCell(), makeDeadCell()],
-                            [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
+    func test_tick_allCellsDead_doesNothing() {
+        let state = [[makeDeadCell(), makeDeadCell()],
+                     [makeDeadCell(), makeDeadCell()]]
+        
+        XCTAssertTrue(tick(state) == state)
     }
     
-    func test_tick_liveCellWithOneLiveNeighbour_dies() {
+    func test_tick_liveCellWithFewerThanTwoLiveNeighbours_dies() {
         XCTAssertTrue(tick([[makeLiveCell(), makeDeadCell(), makeDeadCell()],
                             [makeDeadCell(), makeLiveCell(), makeDeadCell()],
                             [makeDeadCell(), makeDeadCell(), makeDeadCell()]])

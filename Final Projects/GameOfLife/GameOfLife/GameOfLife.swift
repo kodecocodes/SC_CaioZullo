@@ -30,7 +30,6 @@ import Foundation
 
 typealias Cell = Bool
 typealias GameState = [[Cell]]
-typealias Position = (column: Int, row: Int)
 
 func makeLiveCell() -> Cell {
     return true
@@ -40,14 +39,10 @@ func makeDeadCell() -> Cell {
     return false
 }
 
-func makePosition(column: Int, row: Int) -> Position {
-    return (column, row)
-}
-
 func tick(_ state: GameState) -> GameState {
     return state.enumerated().map{ (column, rows) in
         return rows.enumerated().map { (row, cell) in
-            let neighbours = aliveNeighbours(from: makePosition(column: column, row: row), in: state)
+            let neighbours = aliveNeighbours(fromColumn: column, row: row, in: state)
             
             if cell == makeDeadCell() {
                 if neighbours.count == 3 {
@@ -64,12 +59,12 @@ func tick(_ state: GameState) -> GameState {
     }
 }
 
-private func aliveNeighbours(from position: Position, in game: GameState) -> [Cell] {
+private func aliveNeighbours(fromColumn column: Int, row: Int, in game: GameState) -> [Cell] {
     return (-1...1).reduce([Cell](), { (acc, columnOffset) in
         return (-1...1).reduce([Cell](), { (acc, rowOffset) in
             if columnOffset == 0 && rowOffset == 0 { return acc }
-            let offset = makePosition(column: position.column + columnOffset, row: position.row + rowOffset)
-            if let c = cell(at: offset, in: game), c == makeLiveCell() {
+            
+            if let c = cell(atColumn: column + columnOffset, row: row + rowOffset, in: game), c == makeLiveCell() {
                 return acc + [c]
             }
             return acc
@@ -77,9 +72,9 @@ private func aliveNeighbours(from position: Position, in game: GameState) -> [Ce
     })
 }
 
-private func cell(at position: Position, in game: GameState) -> Cell? {
-    guard position.column >= 0 && position.row >= 0 else { return nil }
+private func cell(atColumn column: Int, row: Int, in game: GameState) -> Cell? {
+    guard column >= 0 && row >= 0 else { return nil }
     guard let rows = game.first?.count, rows > 0 else { return nil }
-    guard position.column < game.count && position.row < rows else { return nil }
-    return game[position.column][position.row]
+    guard column < game.count && row < rows else { return nil }
+    return game[column][row]
 }
