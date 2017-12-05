@@ -391,8 +391,10 @@ func test_tick_liveCellWithMoreThanThreeLiveNeighbours_dies() {
 
 Run the tests and... They pass! Looks like we're done with all the rules.
 
-
 ## Talking Head
 
-[TODO: Caio put a nice conclusion here, including a joke]
+Alright, that's all for this screencast.
 
+I hope you had as much fun as I did implementing this kata.
+
+Thanks for watching - and I look forward to seeing back here in the Swift Dojo!
