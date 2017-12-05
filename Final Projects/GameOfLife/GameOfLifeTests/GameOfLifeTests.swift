@@ -31,6 +31,11 @@ import XCTest
 
 class GameOfLifeTests: XCTestCase {
     
+    func test_tick_emptyGrid_doesNothing() {
+        XCTAssertTrue(tick([]) == [])
+        XCTAssertTrue(tick([[]]) == [[]])
+    }
+    
     func test_tick_liveCellWithAllNeighboursDead_dies() {
         XCTAssertTrue(tick([[makeDeadCell(), makeDeadCell(), makeDeadCell()],
                             [makeDeadCell(), makeLiveCell(), makeDeadCell()],
