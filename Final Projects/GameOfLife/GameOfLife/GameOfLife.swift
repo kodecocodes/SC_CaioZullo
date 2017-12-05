@@ -40,32 +40,32 @@ func makeDeadCell() -> Cell {
 }
 
 func tick(_ state: GameState) -> GameState {
-    return state.enumerated().map{ (column, rows) in
+    return state.enumerated().map { (column, rows) in
         return rows.enumerated().map { (row, cell) in
-            let neighbours = aliveNeighbours(fromColumn: column, row: row, in: state)
+            let aliveNeighbours = aliveNeighboursCount(forColumn: column, row: row, in: state)
             
             if cell == makeDeadCell() {
-                if neighbours.count == 3 {
+                if aliveNeighbours == 3 {
                     return makeLiveCell()
                 }
                 return cell
             }
             
-            if neighbours.count >= 2 && neighbours.count <= 3 {
-                return makeLiveCell()
+            if aliveNeighbours == 2 || aliveNeighbours == 3 {
+                return cell
             }
             return makeDeadCell()
         }
     }
 }
 
-private func aliveNeighbours(fromColumn column: Int, row: Int, in game: GameState) -> [Cell] {
-    return (-1...1).reduce([Cell](), { (acc, columnOffset) in
-        return (-1...1).reduce([Cell](), { (acc, rowOffset) in
+private func aliveNeighboursCount(forColumn column: Int, row: Int, in game: GameState) -> Int {
+    return (-1...1).reduce(0, { (acc, columnOffset) in
+        return (-1...1).reduce(0, { (acc, rowOffset) in
             if columnOffset == 0 && rowOffset == 0 { return acc }
             
             if let c = cell(atColumn: column + columnOffset, row: row + rowOffset, in: game), c == makeLiveCell() {
-                return acc + [c]
+                return acc + 1
             }
             return acc
         }) + acc
