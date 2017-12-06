@@ -35,34 +35,34 @@ So the idea behind Swift code katas is to split the practice from the profession
 ## Demo (game-of-life-slides.key)
 
 [Slide 01]
-In this screencast, we're going to start practicing right away with our first Swift Code Kata: The Game of Life!
+In this screencast, we're going to start practicing right away with our first Swift Code Kata based on the Game of Life!
 
 [Slide 02]
-The Game of life is played in a 2D grid where each cell can be in one of two possible states: either alive, or dead. 
-
-[Slide 03]
-You can populate the initial pattern by selecting which cells will be alive or dead. 
+The Game of life is played in a 2D grid where each cell can be in one of two possible states: either alive, or dead.  
 
 [Slide 04]
-At each "tick" in time, every cell interacts with its eight neighbours, which are the cells that are horizontally, vertically, or diagonally adjacent, and then the next generation of cells is calculated by these four rules:
+You populate the grid with an initial state, and then each "tick" you apply some rules to see what happens next.
+
+The way it works, is in each "tick" every cell interacts with its eight neighbours, which are the cells that are horizontally, vertically, or diagonally adjacent, and then the next generation of cells is calculated by four rules.
 
 [Slide 05]
-- Any live cell with fewer than two live neighbours dies, as if caused by underpopulation.
+Rule #1 is underpopulation. Any live cell with fewer than two live neighbours dies, as if caused by underpopulation.
 
 [Slide 06]
-- Any live cell with two or three live neighbours lives on to the next generation.
+Rule #2 is status quo. Any live cell with two or three live neighbours lives on to the next generation.
 
 [Slide 07]
-- Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+Rule #3 is overpopulation. Any live cell with more than three live neighbours dies, as if by overpopulation.
 
 [Slide 08]
-- Any live cell with more than three live neighbours dies, as if by overpopulation.
+Rule #4 is reproduction. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
-In every "tick" in time, the above rules should be applied simultaneously to every cell and the process can be repeated indefinitely to create new generations.
+[Slide 08]
+In every "tick" in time, these 4 rules should be applied simultaneously to every cell and the process can be repeated indefinitely to create new generations.
 
 ## Talking Head
 
-So basically, that's a Swift Code Kata. It's a challenge to implement that algorithm. But there's more. 
+So basically, that's a Swift Code Kata. It's a challenge to implement the Game of Life, starting with this simple function. But there's more. 
 
 Often, you can help improve your skills in your Swift Code Katas by setting up constraints to your practice. For example, have you ever tried to write code without `if` statements? Well, you definitely can! Have you ever tried to write code without using the `var` keyword? That can be great to improve your functional programming skills! Have you ever seen a karate master fighting with one hand tied? Cool, right?!
 
@@ -78,7 +78,15 @@ So, for this example, we'll use some constraints to maximise our mastery experie
 
 The goal is to practice Test Driven Development and functional programming skills, so the final code can be as simple as possible, as long as it respect the constraints.
 
-OK - so now you understand the challenge - to implement the Game of Life - and you understand the constraints - use TDD, and use functional programming. Now, I'd like you to pause the video and try and implement this code kata on your own.
+## Demo (game-of-life-slides.key)
+
+Since this is our first Swift code kata, we're going to start simple and break this problem into chunks.
+
+For the first chunk, we'll simply write a function to take the game state for the Game of Life, and return it unaltered. Our main focus will be getting used to implemenet this in a TDD-manner.
+
+Next time, we'll return and implement the full rules for the Game of Life. 
+
+OK - so now you understand the challenge - to implement a function to take the game state and return it unaltered - and you understand the constraints - use TDD, and use functional programming. Now, I'd like you to pause the video and try and implement this code kata on your own.
 
 Remember, the only way you'll get anything out of a code kata like this is to put the work in, so I highly encourage you to pause the video and give it a shot. When you're done, you can unpause the video to see what I came up with, and you can share your work with everyone else on the forums.
 
@@ -214,187 +222,12 @@ func makeDeadCell() -> Cell {
 }
 ```
 
-For the next test, let's make sure we obey the first rule of Game of Life: Any live cell with fewer than two live neighbours dies, as if caused by underpopulation. Let's add two assertions with 3 by 3 grids this time, one for a live cell with no live neighbours and one for a live cell with one live neighbour. I'll leave it to you to add more assertions to make sure we cover all horizontal, vertical and diagonal adjacent cells!
-
-```
-func test_tick_liveCellWithFewerThanTwoLiveNeighbours_dies() {
-    XCTAssertTrue(tick([[makeLiveCell(), makeDeadCell(), makeDeadCell()],
-                        [makeDeadCell(), makeLiveCell(), makeDeadCell()],
-                        [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
-                            ==
-                       [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
-                        [makeDeadCell(), makeDeadCell(), makeDeadCell()],
-                        [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
-
-    XCTAssertTrue(tick([[makeDeadCell(), makeDeadCell(), makeDeadCell()],
-                        [makeDeadCell(), makeLiveCell(), makeDeadCell()],
-                        [makeDeadCell(), makeDeadCell(), makeLiveCell()]])
-                            ==
-                       [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
-                        [makeDeadCell(), makeDeadCell(), makeDeadCell()],
-                        [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
-}
-```
-
-Great, what's the minimum we can do to make this pass? Remember, no mutation and no var keyword allowed, so we can map both arrays and just replace all live cells with dead cells!
-
-```
-func tick(_ state: GameState) -> GameState {
-    return state.map { rows in
-        return rows.map { _ in
-            return makeDeadCell()
-        }
-    }
-}
-```
-
-Next, the second rule! Any live cell with two or three live neighbours lives on to the next generation, so let's add 2 assertion examples, with diagonal live neighbours. Don't forget to add more as an exercise!
-
-```
-func test_tick_liveCellWithTwoOrThreeLiveNeighbours_lives() {
-    XCTAssertTrue(tick([[makeLiveCell(), makeDeadCell(), makeDeadCell()],
-                        [makeDeadCell(), makeLiveCell(), makeDeadCell()],
-                        [makeDeadCell(), makeDeadCell(), makeLiveCell()]])
-                            ==
-                       [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
-                        [makeDeadCell(), makeLiveCell(), makeDeadCell()],
-                        [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
-
-    XCTAssertTrue(tick([[makeDeadCell(), makeDeadCell(), makeLiveCell()],
-                        [makeDeadCell(), makeLiveCell(), makeDeadCell()],
-                        [makeLiveCell(), makeDeadCell(), makeDeadCell()]])
-                            ==
-                       [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
-                        [makeDeadCell(), makeLiveCell(), makeDeadCell()],
-                        [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
-}
-```
-
-Now, back to the implementation! In the `tick` function we need to somehow get the neighbours for all the cells during the mapping phase, so let's change our code to enumerate the arrays before mapping so we can have an column and row indexes.
-
-```
-func tick(_ state: GameState) -> GameState {
-    return state.enumerated().map { (column, rows) in
-        return rows.enumerated().map { (row, cell) in
-            return makeDeadCell()
-        }
-    }
-}
-```
-
-Great, now we need a way of knowing the live neighbours of a cell, so let's create a new function called `aliveNeighboursCount` where we can give it a column, row and a game state and it will return the live neighbours count by using a reduce on a range from -1 to 1, twice. Which can give us offsets to apply to the column and row. If column and row are both 0, it means we are looking at the current cell, so we can ignore it. Next we can create a new function called `cell` in which we can give it a column, row and a game state and it will return a cell if within the bounds of the 2D array.
-Back to the `aliveNeighboursCount` function we can now ask for a cell at column plus the column offset and a row plus the row offset, if we have a cell we can compare if it's alive. If it is, we increment one to the accumulated value. Else, we just return the current count. That's a very naive implementation but that will do. Since we have tests and we made the function private, we can get away with this for now – as an exercise you can reimplement this function in a more performant way and if the tests passes, you're covered!
-
-```
-private func aliveNeighboursCount(forColumn column: Int, row: Int, in game: GameState) -> Int {
-    return (-1...1).reduce(0, { (acc, columnOffset) in
-        return (-1...1).reduce(0, { (acc, rowOffset) in
-            if columnOffset == 0 && rowOffset == 0 { return acc }
-            
-            if let c = cell(atColumn: column + columnOffset, row: row + rowOffset, in: game), c == makeLiveCell() {
-                return acc + 1
-            }
-            return acc
-        }) + acc
-    })
-}
-
-private func cell(atColumn column: Int, row: Int, in game: GameState) -> Cell? {
-    guard column >= 0 && row >= 0 else { return nil }
-    guard let rows = game.first?.count, rows > 0 else { return nil }
-    guard column < game.count && row < rows else { return nil }
-    return game[column][row]
-}
-```
-
-Back to the tick function! We can now check if it's a dead cell, we just return it. Otherwise we request the live neighbours and is equal to two or three, it still lives, so we just return the cell! Else, it dies. Run the tests and it passes!
-
-```
-func tick(_ state: GameState) -> GameState {
-    return state.enumerated().map { (column, rows) in
-        return rows.enumerated().map { (row, cell) in
-            if cell == makeDeadCell() {
-                return cell
-            }
-            
-            let aliveNeighbours = aliveNeighboursCount(forColumn: column, row: row, in: state)
-
-            if aliveNeighbours == 2 || aliveNeighbours == 3 {
-                return cell
-            }
-            return makeDeadCell()
-        }
-    }
-}
-```
-
-Next rule: Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction. So let's create a new test case with assertions. Run the tests and it should fail.
-
-```
-func test_tick_deadCellWithExactlyThreeLiveNeighbours_becomesAlive() {
-    XCTAssertTrue(tick([[makeLiveCell(), makeDeadCell(), makeLiveCell()],
-                        [makeDeadCell(), makeDeadCell(), makeDeadCell()],
-                        [makeLiveCell(), makeDeadCell(), makeDeadCell()]])
-                            ==
-                      [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
-                       [makeDeadCell(), makeLiveCell(), makeDeadCell()],
-                       [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
-
-    XCTAssertTrue(tick([[makeDeadCell(), makeLiveCell(), makeDeadCell()],
-                        [makeLiveCell(), makeLiveCell(), makeLiveCell()],
-                        [makeDeadCell(), makeLiveCell(), makeDeadCell()]])
-                            ==
-                       [[makeLiveCell(), makeLiveCell(), makeLiveCell()],
-                        [makeLiveCell(), makeDeadCell(), makeLiveCell()],
-                        [makeLiveCell(), makeLiveCell(), makeLiveCell()]])
-}
-```
-
-Back to the `tick` function, we just need to move the alive neighbours before the first check for dead cells and add a new condition, if the alive neighbours is three, it should return a live cell. Easy!
-
-```
-func tick(_ state: GameState) -> GameState {
-    return state.enumerated().map { (column, rows) in
-        return rows.enumerated().map { (row, cell) in
-            let aliveNeighbours = aliveNeighboursCount(forColumn: column, row: row, in: state)
-
-            if cell == makeDeadCell() {
-                if aliveNeighbours == 3 {
-                    return makeLiveCell()
-                }
-                return cell
-            }
-            
-
-            if aliveNeighbours == 2 || aliveNeighbours == 3 {
-                return cell
-            }
-            return makeDeadCell()
-        }
-    }
-}
-```
-
-Last rule: Any live cell with more than three live neighbours dies, as if by overpopulation. Let's write the test and assertion:
-
-```
-func test_tick_liveCellWithMoreThanThreeLiveNeighbours_dies() {
-    XCTAssertTrue(tick([[makeLiveCell(), makeDeadCell(), makeLiveCell()],
-                        [makeDeadCell(), makeLiveCell(), makeDeadCell()],
-                        [makeLiveCell(), makeDeadCell(), makeLiveCell()]])
-                            ==
-                       [[makeDeadCell(), makeLiveCell(), makeDeadCell()],
-                        [makeLiveCell(), makeDeadCell(), makeLiveCell()],
-                        [makeDeadCell(), makeLiveCell(), makeDeadCell()]])
-}
-```
-
-Run the tests and... They pass! Looks like we're done with all the rules.
-
 ## Talking Head
 
 Alright, that's all for this screencast.
 
-I hope you had as much fun as I did implementing this kata.
+Although what we implemented here was quite simple, this has been some great practice - both on test-driven development, and using code katas in general. Remember, the entire reason for doing these code katas is practice makes perfect.
 
-Thanks for watching - and I look forward to seeing back here in the Swift Dojo!
+This is just the beginning - if you're eager to implement the rest of the Game of Life, come on back for the next screencast!
+
+Thanks for watching - and I look forward to seeing back here in the Swift Dojo.
