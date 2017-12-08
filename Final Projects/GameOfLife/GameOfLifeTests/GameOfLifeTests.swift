@@ -61,7 +61,25 @@ class GameOfLifeTests: XCTestCase {
                             [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
     }
 
-    func test_tick_liveCellWithTwoOrThreeLiveNeighbours_lives() {
+    func test_tick_deadCellWithExactlyThreeLiveNeighbours_becomesAlive() {
+        XCTAssertTrue(tick([[makeLiveCell(), makeDeadCell(), makeLiveCell()],
+                            [makeDeadCell(), makeDeadCell(), makeDeadCell()],
+                            [makeLiveCell(), makeDeadCell(), makeDeadCell()]])
+                                ==
+                           [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
+                            [makeDeadCell(), makeLiveCell(), makeDeadCell()],
+                            [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
+        
+        XCTAssertTrue(tick([[makeDeadCell(), makeDeadCell(), makeLiveCell()],
+                            [makeDeadCell(), makeDeadCell(), makeDeadCell()],
+                            [makeLiveCell(), makeDeadCell(), makeLiveCell()]])
+                                ==
+                           [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
+                            [makeDeadCell(), makeLiveCell(), makeDeadCell()],
+                            [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
+    }
+    
+    func test_tick_liveCellWithTwoLiveNeighbours_lives() {
         XCTAssertTrue(tick([[makeLiveCell(), makeDeadCell(), makeDeadCell()],
                             [makeDeadCell(), makeLiveCell(), makeDeadCell()],
                             [makeDeadCell(), makeDeadCell(), makeLiveCell()]])
@@ -69,34 +87,18 @@ class GameOfLifeTests: XCTestCase {
                            [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
                             [makeDeadCell(), makeLiveCell(), makeDeadCell()],
                             [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
-
-        XCTAssertTrue(tick([[makeDeadCell(), makeDeadCell(), makeLiveCell()],
+    }
+    
+    func test_tick_liveCellWithThreeLiveNeighbours_lives() {
+        XCTAssertTrue(tick([[makeLiveCell(), makeDeadCell(), makeLiveCell()],
                             [makeDeadCell(), makeLiveCell(), makeDeadCell()],
                             [makeLiveCell(), makeDeadCell(), makeDeadCell()]])
                                 ==
-                           [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
-                            [makeDeadCell(), makeLiveCell(), makeDeadCell()],
+                           [[makeDeadCell(), makeLiveCell(), makeDeadCell()],
+                            [makeLiveCell(), makeLiveCell(), makeDeadCell()],
                             [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
     }
-    
-    func test_tick_deadCellWithExactlyThreeLiveNeighbours_becomesAlive() {
-        XCTAssertTrue(tick([[makeLiveCell(), makeDeadCell(), makeLiveCell()],
-                            [makeDeadCell(), makeDeadCell(), makeDeadCell()],
-                            [makeLiveCell(), makeDeadCell(), makeDeadCell()]])
-                                ==
-                          [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
-                           [makeDeadCell(), makeLiveCell(), makeDeadCell()],
-                           [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
 
-        XCTAssertTrue(tick([[makeDeadCell(), makeLiveCell(), makeDeadCell()],
-                            [makeLiveCell(), makeLiveCell(), makeLiveCell()],
-                            [makeDeadCell(), makeLiveCell(), makeDeadCell()]])
-                                ==
-                           [[makeLiveCell(), makeLiveCell(), makeLiveCell()],
-                            [makeLiveCell(), makeDeadCell(), makeLiveCell()],
-                            [makeLiveCell(), makeLiveCell(), makeLiveCell()]])
-    }
-    
     func test_tick_liveCellWithMoreThanThreeLiveNeighbours_dies() {
         XCTAssertTrue(tick([[makeLiveCell(), makeDeadCell(), makeLiveCell()],
                             [makeDeadCell(), makeLiveCell(), makeDeadCell()],

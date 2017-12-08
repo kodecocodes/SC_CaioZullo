@@ -44,16 +44,14 @@ func tick(_ state: GameState) -> GameState {
         return rows.enumerated().map { (row, cell) in
             let aliveNeighbours = aliveNeighboursCount(forColumn: column, row: row, in: state)
             
-            if cell == makeDeadCell() {
-                if aliveNeighbours == 3 {
-                    return makeLiveCell()
-                }
+            if aliveNeighbours == 3 {
+                return makeLiveCell()
+            }
+            
+            if cell == makeLiveCell() && aliveNeighbours == 2 {
                 return cell
             }
             
-            if aliveNeighbours == 2 || aliveNeighbours == 3 {
-                return cell
-            }
             return makeDeadCell()
         }
     }

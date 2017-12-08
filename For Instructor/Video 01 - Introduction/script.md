@@ -41,7 +41,7 @@ In this screencast, we're going to start practicing right away with our first Sw
 The Game of life is played in a 2D grid where each cell can be in one of two possible states: either alive, or dead.  
 
 [Slide 04]
-You populate the grid with an initial state, and then each "tick" you apply some rules to see what happens next.
+You populate the grid with an initial state, and then at each "tick" you apply some rules to see what happens next.
 
 The way it works, is in each "tick" every cell interacts with its eight neighbours, which are the cells that are horizontally, vertically, or diagonally adjacent, and then the next generation of cells is calculated by four rules.
 
@@ -49,10 +49,10 @@ The way it works, is in each "tick" every cell interacts with its eight neighbou
 Rule #1 is underpopulation. Any live cell with fewer than two live neighbours dies, as if caused by underpopulation.
 
 [Slide 06]
-Rule #2 is status quo. Any live cell with two or three live neighbours lives on to the next generation.
+Rule #2 is overpopulation. Any live cell with more than three live neighbours dies, as if by overpopulation.
 
 [Slide 07]
-Rule #3 is overpopulation. Any live cell with more than three live neighbours dies, as if by overpopulation.
+Rule #3 is status quo. Any live cell with two or three live neighbours lives on to the next generation.
 
 [Slide 08]
 Rule #4 is reproduction. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
@@ -76,13 +76,13 @@ So, for this example, we'll use some constraints to maximise our mastery experie
 	- Only pure functions
 	- The "var" keyword is not allowed!
 
-The goal is to practice Test Driven Development and functional programming skills, so the final code can be as simple as possible, as long as it respect the constraints.
+The goal for this first code kata is to practice Test Driven Development and functional programming skills, so the final code can be as simple as possible, as long as it respect the constraints.
 
 ## Demo (game-of-life-slides.key)
 
 Since this is our first Swift code kata, we're going to start simple and break this problem into chunks.
 
-For the first chunk, we'll simply write a function to take the game state for the Game of Life, and return it unaltered. Our main focus will be getting used to implemenet this in a TDD-manner.
+For the first chunk, we'll simply write a function to take the game state for the Game of Life, and return it unaltered. Our main focus will be getting used to implement this in a TDD-manner.
 
 Next time, we'll return and implement the full rules for the Game of Life. 
 
@@ -149,7 +149,7 @@ func tick(_ state: GameState) -> GameState {
 }
 ```
 
-Great! Now a TDD rule says we need to see a failing test first, to guarantee that we're testing something so let's return something that will make it fail:
+Great! Now a TDD rule says we need to see a failing test first, to guarantee that we're testing something. So let's return something that will make it fail:
 
 ```
 func tick(_ state: GameState) -> GameState {
@@ -157,7 +157,7 @@ func tick(_ state: GameState) -> GameState {
 }
 ```
 
-Let's try to run the test again (cmd+U). Oh-oh. Arrays of arrays are not Equatable so they don't have a == function. Let's implement our own in the test file (GameOfLifeTests.swift).
+Let's try to run the test again (cmd+U). Oh-oh. Arrays of arrays are not Equatable so they don't have an equality (==) function. Let's implement our own in the test file (GameOfLifeTests.swift).
 
 Let's leave it outside of the class scope, and we can use generics to make sure this can be used for any 2D array. First we check the count than we iterate through the collection and compare each index.
 
