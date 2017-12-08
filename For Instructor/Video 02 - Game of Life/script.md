@@ -129,7 +129,7 @@ func test_tick_deadCellWithExactlyThreeLiveNeighbours_becomesAlive() {
 
 Now, back to the implementation! 
 
-We need a way of knowing the live neighbours of a cell, so let's create a new function called `aliveNeighboursCount` where we can give it a column, row and a game state and it will return the live neighbours count by using a reduce on a range from -1 to 1, twice. Which can give us offsets to apply to the column and row. If column and row are both 0, it means we are looking at the current cell, so we can ignore it. Next we can create a new function called `cell` in which we can give it a column, row and a game state and it will return a cell if within the bounds of the 2D array.
+We need a way of knowing the live neighbours of a cell, so let's create a new function called `aliveNeighboursCount` where we can give it a column, row and a game state and it will return the live neighbours count by using a reduce on a range from -1 to 1, twice. That will give us offsets to apply to the column and row. If column and row are both 0, it means we are looking at the current cell, so we can ignore it. Next we can create a new function called `cell` in which we can give it a column, row and a game state and it will return a cell if within the bounds of the 2D array.
 Back to the `aliveNeighboursCount` function we can now ask for a cell at column plus the column offset and a row plus the row offset, if we have a cell we can compare if it's alive. If it is, we increment one to the accumulated value. Else, we just return the current count. That's a very naive implementation but that will do. Since we have tests and we made the function private, we can get away with this for now – as an exercise you can reimplement this function in a more performant way and if the tests passes, you're covered!
 
 ```
@@ -172,7 +172,9 @@ func tick(_ state: GameState) -> GameState {
 }
 ```
 
-Next rule: Any live cell with two or three live neighbours lives on to the next generation, so let's break it down into 2 tests, one with two live neighbours, and one with three. 
+Next rule: Any live cell with two or three live neighbours lives on to the next generation, so let's break it down into 2 tests. 
+
+One with two live neighbours:
 
 ```
 func test_tick_liveCellWithTwoLiveNeighbours_lives() {
@@ -184,6 +186,8 @@ func test_tick_liveCellWithTwoLiveNeighbours_lives() {
                         [makeDeadCell(), makeLiveCell(), makeDeadCell()],
                         [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
 }
+
+And one with three:
 
 func test_tick_liveCellWithThreeLiveNeighbours_lives() {
     XCTAssertTrue(tick([[makeLiveCell(), makeDeadCell(), makeLiveCell()],
@@ -240,4 +244,4 @@ Alright, that's all for this screencast.
 
 I hope you had as much fun as I did implementing this kata.
 
-Thanks for watching - and I look forward to seeing back here in the Swift Dojo!
+Thanks for watching - and I look forward to seeing you back here in the Swift Dojo!
