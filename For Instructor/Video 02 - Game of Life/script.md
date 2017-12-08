@@ -69,7 +69,9 @@ So - pause the video and put your skills to the test - and good luck.
 
 ## Demo
 
-Let's start by taking a tour of the starter project. [Caio briefly describe what's in the starter project from last time.]
+Let's start by taking a tour of the starter project. We have two swift files: GameOfLife.swift where we have typealiases for the Cell and the GameState, two factory methods for creating the live and dead cells, and an initial stub for the tick function that does nothing.
+
+In the GameOfLifeTests.swift we have our initial "do nothing" tests, which just give us extra guarantees that we are covering the empty array cases and that the tick function doesn't change grids will all cells dead.
 
 For the next test, let's make sure we obey the first rule of Game of Life: Any live cell with fewer than two live neighbours dies, as if caused by underpopulation. Let's add two assertions with 3 by 3 grids this time, one for a live cell with no live neighbours and one for a live cell with one live neighbour. I'll leave it to you to add more assertions to make sure we cover all horizontal, vertical and diagonal adjacent cells!
 
