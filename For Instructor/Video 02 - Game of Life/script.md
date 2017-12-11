@@ -53,15 +53,16 @@ In every "tick" in time, these 4 rules should be applied simultaneously to every
 
 To make things interesting, we're also going to add two constraints:
 
-1. TDD: The code kata must be test-driven
-2. Functional programming, which means:
+Constraint #1 is Test Driven Development. The code kata must be test-driven
+
+Constraint #2 is Functional programming. Which means:
 	- No mutation
 	- Only pure functions
 	- The "var" keyword is not allowed!
 
 The goal for this first code kata is to practice Test Driven Development and functional programming skills, so the final code can be as simple as possible, as long as it respect the constraints.
 
-I've given you a starter project that has a stub for the tick function, which currently does nothing. Your challenge is to extend this and add the rest of the rules of the Game of Life, using TDD, and use functional programming. Now, I'd like you to pause the video and try and implement this code kata on your own.
+I've given you a starter project that has a stub for the tick function, which currently does nothing. Your challenge is to extend this and add the rest of the rules of the Game of Life, using TDD and Functional Programming. Now, I'd like you to pause the video and try and implement this code kata on your own.
 
 So - pause the video and put your skills to the test - and good luck. 
 
@@ -73,7 +74,7 @@ Let's start by taking a tour of the starter project. We have two swift files: Ga
 
 In the GameOfLifeTests.swift we have our initial "do nothing" tests, which just give us extra guarantees that we are covering the empty array cases and that the tick function doesn't change grids will all cells dead.
 
-For the next test, let's make sure we obey the first rule of Game of Life: Any live cell with fewer than two live neighbours dies, as if caused by underpopulation. Let's add two assertions with 3 by 3 grids this time, one for a live cell with no live neighbours and one for a live cell with one live neighbour. I'll leave it to you to add more assertions to make sure we cover all horizontal, vertical and diagonal adjacent cells!
+For the next test, let's make sure we obey the first rule of Game of Life: Any live cell with fewer than two live neighbours dies, as if caused by underpopulation. Let's add two assertions with 3 by 3 grids this time, one for a live cell with no live neighbours and one for a live cell with one live neighbour. I'll leave it to you to add more assertions to make sure we cover all horizontal, vertical and diagonal neighbours!
 
 ```
 func test_tick_liveCellWithFewerThanTwoLiveNeighbours_dies() {
@@ -156,7 +157,7 @@ private func cell(atColumn column: Int, row: Int, in game: GameState) -> Cell? {
 }
 ```
 
-Back to the `tick` function, let's change our code to enumerate the arrays before mapping so we can have an column and row indexes. Now we just need to check the alive neighbors count. If the count is three, it should return a live cell. Easy!
+Back to the `tick` function, let's change our code to enumerate the arrays before mapping so we can have an column and row indexes. Now we just need to check the alive neighbours count. If the count is three, it should return a live cell. Easy!
 
 ```
 func tick(_ state: GameState) -> GameState {
@@ -202,7 +203,7 @@ func test_tick_liveCellWithThreeLiveNeighbours_lives() {
 }
 ```
 
-Back to the tick function! Since we already cover the case for three alive neighbors, we can just check if it's a live cell and if the count is equal to two. If the count is equal to two it still lives, so we just return the cell! Else, it dies. Run the tests and it passes!
+Back to the tick function! Since we already cover the case for three alive neighbours, we can just check if it's a live cell and if the count is equal to two. If the count is equal to two it still lives, so we just return the cell! Else, it dies. Run the tests and it passes!
 
 ```
 func tick(_ state: GameState) -> GameState {

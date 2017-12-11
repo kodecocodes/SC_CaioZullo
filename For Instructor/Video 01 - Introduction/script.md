@@ -70,8 +70,9 @@ Well, I don't recommend trying the last one, but by setting up constraints, you 
 
 So, for this example, we'll use some constraints to maximise our mastery experience on the following techniques:
 
-1. TDD: The code kata must be test-driven
-2. Functional programming, which means:
+Constraint #1 is Test Driven Development. The code kata must be test-driven
+
+Constraint #2 is Functional programming. Which means:
 	- No mutation
 	- Only pure functions
 	- The "var" keyword is not allowed!
