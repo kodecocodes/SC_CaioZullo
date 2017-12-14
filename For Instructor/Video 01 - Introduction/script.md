@@ -231,4 +231,6 @@ Although what we implemented here was quite simple, this has been some great pra
 
 This is just the beginning - if you're eager to implement the rest of the Game of Life, come on back for the next screencast!
 
+You can find me at twitter.com/caiozullo.
+
 Thanks for watching - and I look forward to seeing back here in the Swift Dojo.

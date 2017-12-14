@@ -245,6 +245,8 @@ Run the tests and... They pass! Looks like we're done with all the rules.
 
 Alright, that's all for this screencast.
 
-I hope you had as much fun as I did implementing this kata.
+I hope you had as much fun as I did implementing this kata. 
+
+You can find me at twitter.com/caiozullo.
 
 Thanks for watching - and I look forward to seeing you back here in the Swift Dojo!
