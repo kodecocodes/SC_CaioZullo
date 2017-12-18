@@ -16,21 +16,21 @@ In this episode we're going to improve our Test Driven Development and functiona
 * **Platform:** iOS 11
 * **Editor**: Xcode 9
 
-# Talking Head
+# Talking Head - Section 1
 
 Hello everybody, this is Caio. In this screencast, we're going to perform a Swift Code Kata to implement the Game of Life.
 
-If you don't know what Swift Code Katas are, be sure to check out our Introduction to Swift Code Katas screencast first.
+If you don't know what Swift Code Katas are, be sure to first check out our Introduction to Swift Code Katas screencast.
 
 Let's review the rules of Game of Life, and then dive in!
 
-## Demo (game-of-life-slides.key)
+## Slides (game-of-life-slides.key)
 
 [Slide 02]
 The Game of life is played in a 2D grid where each cell can be in one of two possible states: either alive, or dead.  
 
 [Slide 04]
-You populate the grid with an initial state, and then at each "tick" you apply some rules to see what happens next.
+You populate the grid with an initial state, and then at each "tick" in time you apply some rules to see what happens next.
 
 The way it works, is in each "tick" every cell interacts with its eight neighbours, which are the cells that are horizontally, vertically, or diagonally adjacent, and then the next generation of cells is calculated by four rules.
 
@@ -49,7 +49,7 @@ Rule #4 is reproduction. Any dead cell with exactly three live neighbours become
 [Slide 08]
 In every "tick" in time, these 4 rules should be applied simultaneously to every cell and the process can be repeated indefinitely to create new generations.
 
-## Talking Head
+## End of slides
 
 To make things interesting, we're also going to add two constraints:
 
@@ -68,7 +68,7 @@ So - pause the video and put your skills to the test - and good luck.
 
 ## Challenge Slide (challenge-slide.key - Slide 01)
 
-## Demo
+## Demo - Section 2
 
 Let's start by taking a tour of the starter project. We have two swift files: GameOfLife.swift where we have typealiases for the Cell and the GameState, two factory methods for creating the live and dead cells, and an initial stub for the tick function that does nothing.
 
@@ -241,7 +241,7 @@ func test_tick_liveCellWithMoreThanThreeLiveNeighbours_dies() {
 
 Run the tests and... They pass! Looks like we're done with all the rules.
 
-## Talking Head
+## Talking Head - Section 3
 
 Alright, that's all for this screencast.
 

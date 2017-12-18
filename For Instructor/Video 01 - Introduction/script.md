@@ -16,7 +16,7 @@ The idea behind Swift code katas is to split the practice from the profession, s
 * **Platform:** iOS 11
 * **Editor**: Xcode 9
 
-# Talking Head
+# Talking Head - Section 1
 
 Hello everybody, this is Caio. In this screencast, we're going to introduce you to a really cool practice that will help you improve your skills as a Swift developer: Swift Code Katas!
 
@@ -32,7 +32,7 @@ This is important, because in many other industries, folks practice every day to
 
 So the idea behind Swift code katas is to split the practice from the profession, so we can dedicate time to become better and better at what we do.
 
-## Demo (game-of-life-slides.key)
+## Slides (game-of-life-slides.key)
 
 [Slide 01]
 In this screencast, we're going to start practicing right away with our first Swift Code Kata based on the Game of Life!
@@ -41,7 +41,7 @@ In this screencast, we're going to start practicing right away with our first Sw
 The Game of life is played in a 2D grid where each cell can be in one of two possible states: either alive, or dead.  
 
 [Slide 04]
-You populate the grid with an initial state, and then at each "tick" you apply some rules to see what happens next.
+You populate the grid with an initial state, and then at each "tick" in time you apply some rules to see what happens next.
 
 The way it works, is in each "tick" every cell interacts with its eight neighbours, which are the cells that are horizontally, vertically, or diagonally adjacent, and then the next generation of cells is calculated by four rules.
 
@@ -60,9 +60,9 @@ Rule #4 is reproduction. Any dead cell with exactly three live neighbours become
 [Slide 08]
 In every "tick" in time, these 4 rules should be applied simultaneously to every cell and the process can be repeated indefinitely to create new generations.
 
-## Talking Head
+## End of slides
 
-So basically, that's a Swift Code Kata. It's a challenge to implement the Game of Life, starting with this simple function. But there's more. 
+So basically, that's a Swift Code Kata. But there's more. 
 
 Often, you can help improve your skills in your Swift Code Katas by setting up constraints to your practice. For example, have you ever tried to write code without `if` statements? Well, you definitely can! Have you ever tried to write code without using the `var` keyword? That can be great to improve your functional programming skills! Have you ever seen a karate master fighting with one hand tied? Cool, right?!
 
@@ -79,8 +79,9 @@ Constraint #2 is Functional programming. Which means:
 
 The goal for this first code kata is to practice Test Driven Development and functional programming skills, so the final code can be as simple as possible, as long as it respect the constraints.
 
-## Demo (game-of-life-slides.key)
+## Slides (game-of-life-slides.key)
 
+[Slide 09]
 Since this is our first Swift code kata, we're going to start simple and break this problem into chunks.
 
 For the first chunk, we'll simply write a function to take the game state for the Game of Life, and return it unaltered. Our main focus will be getting used to implement this in a TDD-manner.
@@ -95,7 +96,7 @@ So - pause the video and put your skills to the test - and good luck.
 
 ## Challenge Slide (challenge-slide.key - Slide 01)
 
-## Demo
+## Demo - Section 2
 
 Ok, let's do this!
 
@@ -223,7 +224,7 @@ func makeDeadCell() -> Cell {
 }
 ```
 
-## Talking Head
+## Talking Head - Section 3
 
 Alright, that's all for this screencast.
 
