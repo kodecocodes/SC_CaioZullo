@@ -78,7 +78,7 @@ For the next test, let's make sure we obey the first rule of Game of Life: Any l
 
 ```
 func test_tick_liveCellWithFewerThanTwoLiveNeighbours_dies() {
-    XCTAssertTrue(tick([[makeLiveCell(), makeDeadCell(), makeDeadCell()],
+    XCTAssertTrue(tick([[makeDeadCell(), makeDeadCell(), makeDeadCell()],
                         [makeDeadCell(), makeLiveCell(), makeDeadCell()],
                         [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
                             ==
