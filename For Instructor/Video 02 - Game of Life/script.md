@@ -86,9 +86,9 @@ func test_tick_liveCellWithFewerThanTwoLiveNeighbours_dies() {
                         [makeDeadCell(), makeDeadCell(), makeDeadCell()],
                         [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
 
-    XCTAssertTrue(tick([[makeDeadCell(), makeDeadCell(), makeDeadCell()],
+    XCTAssertTrue(tick([[makeLiveCell(), makeDeadCell(), makeDeadCell()],
                         [makeDeadCell(), makeLiveCell(), makeDeadCell()],
-                        [makeDeadCell(), makeDeadCell(), makeLiveCell()]])
+                        [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
                             ==
                        [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
                         [makeDeadCell(), makeDeadCell(), makeDeadCell()],
