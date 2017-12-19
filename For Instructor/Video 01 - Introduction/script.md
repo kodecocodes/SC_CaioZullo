@@ -100,7 +100,7 @@ So - pause the video and put your skills to the test - and good luck.
 
 Ok, let's do this!
 
-In Xcode, you can create a new project. Select the macOS tab in the template finder and select Cocoa Framework and press Next. Type GameOfLife as the product name, Swift as the language and make sure to tick the "Include Unit Tests" checkbox!
+In Xcode, you can create a new project. Select the macOS tab in the template finder, select Cocoa Framework and press Next. Type GameOfLife as the product name, Swift as the language and make sure to tick the "Include Unit Tests" checkbox!
 
 Xcode should have created a test file for you in the test target: "GameOfLifeTests.swift", so let's select and use it.
 
@@ -201,7 +201,7 @@ func test_tick_allCellsDead_doesNothing() {
 }
 ```
 
-Run the tests. And it passes! That's just an extra guarantee test, so let's leave it in and refactor the code a bit. Let's create a factory methods to avoid using explicit booleans in the code. 
+Run the tests. And it passes! That's just an extra guarantee test, so let's leave it in and refactor the code a bit. Let's create factory methods to avoid using explicit booleans in the code. 
 
 ```
 func test_tick_allCellsDead_doesNothing() {
