@@ -47,66 +47,66 @@ class GameOfLifeTests: XCTestCase {
     XCTAssertTrue(tick([[makeDeadCell(), makeDeadCell(), makeDeadCell()],
                         [makeDeadCell(), makeLiveCell(), makeDeadCell()],
                         [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
-      ==
-      [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
-       [makeDeadCell(), makeDeadCell(), makeDeadCell()],
-       [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
+                          ==
+                       [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
+                        [makeDeadCell(), makeDeadCell(), makeDeadCell()],
+                        [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
     
     XCTAssertTrue(tick([[makeLiveCell(), makeDeadCell(), makeDeadCell()],
                         [makeDeadCell(), makeLiveCell(), makeDeadCell()],
                         [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
-      ==
-      [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
-       [makeDeadCell(), makeDeadCell(), makeDeadCell()],
-       [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
+                          ==
+                       [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
+                        [makeDeadCell(), makeDeadCell(), makeDeadCell()],
+                        [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
   }
   
   func test_tick_deadCellWithExactlyThreeLiveNeighbors_becomesAlive() {
     XCTAssertTrue(tick([[makeLiveCell(), makeDeadCell(), makeLiveCell()],
                         [makeDeadCell(), makeDeadCell(), makeDeadCell()],
                         [makeLiveCell(), makeDeadCell(), makeDeadCell()]])
-      ==
-      [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
-       [makeDeadCell(), makeLiveCell(), makeDeadCell()],
-       [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
+                          ==
+                       [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
+                        [makeDeadCell(), makeLiveCell(), makeDeadCell()],
+                        [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
     
     XCTAssertTrue(tick([[makeDeadCell(), makeDeadCell(), makeLiveCell()],
                         [makeDeadCell(), makeDeadCell(), makeDeadCell()],
                         [makeLiveCell(), makeDeadCell(), makeLiveCell()]])
-      ==
-      [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
-       [makeDeadCell(), makeLiveCell(), makeDeadCell()],
-       [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
+                          ==
+                       [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
+                        [makeDeadCell(), makeLiveCell(), makeDeadCell()],
+                        [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
   }
   
   func test_tick_liveCellWithTwoLiveNeighbors_lives() {
     XCTAssertTrue(tick([[makeLiveCell(), makeDeadCell(), makeDeadCell()],
                         [makeDeadCell(), makeLiveCell(), makeDeadCell()],
                         [makeDeadCell(), makeDeadCell(), makeLiveCell()]])
-      ==
-      [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
-       [makeDeadCell(), makeLiveCell(), makeDeadCell()],
-       [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
+                          ==
+                       [[makeDeadCell(), makeDeadCell(), makeDeadCell()],
+                        [makeDeadCell(), makeLiveCell(), makeDeadCell()],
+                        [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
   }
   
   func test_tick_liveCellWithThreeNeighbors_lives() {
     XCTAssertTrue(tick([[makeLiveCell(), makeDeadCell(), makeLiveCell()],
                         [makeDeadCell(), makeLiveCell(), makeDeadCell()],
                         [makeLiveCell(), makeDeadCell(), makeDeadCell()]])
-      ==
-      [[makeDeadCell(), makeLiveCell(), makeDeadCell()],
-       [makeLiveCell(), makeLiveCell(), makeDeadCell()],
-       [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
+                          ==
+                       [[makeDeadCell(), makeLiveCell(), makeDeadCell()],
+                        [makeLiveCell(), makeLiveCell(), makeDeadCell()],
+                        [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
   }
   
   func test_tick_liveCellWithMoreThanThreeLiveNeighbors_dies() {
     XCTAssertTrue(tick([[makeLiveCell(), makeDeadCell(), makeLiveCell()],
                         [makeDeadCell(), makeLiveCell(), makeDeadCell()],
                         [makeLiveCell(), makeDeadCell(), makeLiveCell()]])
-      ==
-      [[makeDeadCell(), makeLiveCell(), makeDeadCell()],
-       [makeLiveCell(), makeDeadCell(), makeLiveCell()],
-       [makeDeadCell(), makeLiveCell(), makeDeadCell()]])
+                          ==
+                       [[makeDeadCell(), makeLiveCell(), makeDeadCell()],
+                        [makeLiveCell(), makeDeadCell(), makeLiveCell()],
+                        [makeDeadCell(), makeLiveCell(), makeDeadCell()]])
   }
   
 }
@@ -118,3 +118,4 @@ private func ==<T: Equatable>(lhs: [[T]], rhs: [[T]]) -> Bool {
   }
   return true
 }
+

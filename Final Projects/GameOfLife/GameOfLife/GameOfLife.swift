@@ -76,5 +76,3 @@ private func cell(atColumn column: Int, row: Int, in game: GameState) -> Cell? {
   guard column < game.count && row < rows else { return nil }
   return game[column][row]
 }
-
-
