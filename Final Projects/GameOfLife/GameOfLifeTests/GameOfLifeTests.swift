@@ -89,7 +89,7 @@ class GameOfLifeTests: XCTestCase {
                         [makeDeadCell(), makeDeadCell(), makeDeadCell()]])
   }
   
-  func test_tick_liveCellWithThreeNeighbors_lives() {
+  func test_tick_liveCellWithThreeLiveNeighbors_lives() {
     XCTAssertTrue(tick([[makeLiveCell(), makeDeadCell(), makeLiveCell()],
                         [makeDeadCell(), makeLiveCell(), makeDeadCell()],
                         [makeLiveCell(), makeDeadCell(), makeDeadCell()]])
