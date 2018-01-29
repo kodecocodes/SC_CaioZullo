@@ -6,7 +6,9 @@ Swift Code Katas: Introduction
 
 ## Screencast Description
 
-The idea behind Swift code katas is to split the practice from the profession, so we can dedicate time to master our craft.
+Welcome to the Swift Dojo! 
+
+In this screencast, we're going to introduce you to a really cool practice that will help you improve your skills as a Swift developer: Swift Code Katas!
 
 ## Language, Editor and Platform versions used in this screencast
 
