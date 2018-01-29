@@ -6,9 +6,7 @@ Swift Code Katas: Introduction
 
 ## Screencast Description
 
-In many other industries, folks practice every day to master their crafts - take a look at great musicians or athletes for example. However, for some reason many of us as Swift developers feel that our practice is done on the job. But that often leads to a lot of mistakes, and a lot of bugs.
-
-The idea behind Swift code katas is to split the practice from the profession, so we can dedicate time to become better and better at what we do.
+The idea behind Swift code katas is to split the practice from the profession, so we can dedicate time to master our craft.
 
 ## Language, Editor and Platform versions used in this screencast
 
